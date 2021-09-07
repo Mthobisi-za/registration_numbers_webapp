@@ -1,0 +1,45 @@
+
+
+    
+        <div class="base">
+            <div class="nav">
+                <div class="lp">
+                    <h6 style="color: purple;" class="disa">We only accept registration numbers for Cape Town, Paarl and Stellenbosch</h6>
+                    <h6 style="color: purple;" class="disaa">Accepted formats "CA 908-345" OR "CA 908 345" OR "CA 0987654"</h6>
+                    <form action="/update" method="POST">
+                    <label for="regN">Registration Number</label> <br> <br>
+                    <input type="text" placeholder="CA 123-897" name="regNum" maxlength="10" id="regN"> <br> <br> <span class="span" style="color: red;"></span> <br>
+                    <button id="btn" type="submit">Add</button> <button type="button" id="remove">Reset</button> <br> <br> <br><br>
+                    </form>
+                    <!------radio buttons-->
+                    <div class="div">
+                        <form  method="post" action="/show">
+                        <label for="capetown">Cape Town</label> <input type="radio" name="group" value="CA" id="capetown">
+                        <label for="paarl">Paarl</label> <input type="radio" name="group" value="CJ" id="paarl">
+                        <label for="stelle">Stellenbosch</label> <input type="radio" name="group" value="CL" id="stelle">
+                        <label for="all">All</label> <input type="radio" name="group" value="All" id="all">
+                    </div> <br>
+                    <span class="sp" style="color: red;"> {{messages.info}}</span>
+                    <br>
+                    <button class="show" type="submit">Show</button>
+                    </form>
+                </div> <br>
+                <div class="append">
+                    <h6 class="lop" style="color: purple; text-align: center;"></h6>
+                    <ul class="ul_append">
+                        {{#each data}}
+                            <li>{{this.regnumber}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+            <!------appended data-->
+
+        </div>
+
+    <!----call the javascriopts-->
+    <!----
+    <script src="js/businesss-logic.js"></script>
+    <script src="js/dom-logic.js"></script>
+    <script src="js/remove-dom-logic.js"></script>
+    --->
