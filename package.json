@@ -4,7 +4,8 @@
   "description": "Greet exercise project is a web page that greets a user with the chosen language that a user preferes. The webpage has 3 languages.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
