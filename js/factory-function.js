@@ -23,7 +23,6 @@ module.exports = function factoryFunction(pool){
         }
     }
     async function uniqueReg(str){
-        data = ""
         if(str === "All"){
             data = (await useDbLogic.getData()).rows;
         }else{
