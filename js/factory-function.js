@@ -19,7 +19,7 @@ module.exports = function factoryFunction(pool){
                message = "please enter valid Reg Number e.g 'CA 123-897' OR 'CJ 7865466' OR 'CL 098 879'"
             }
         } else{
-            message = "Please insert a registartion number in the input"
+            message = "Please insert a registration number in the input"
         }
     }
     async function uniqueReg(str){
