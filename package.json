@@ -1,7 +1,7 @@
 {
   "name": "registration_numbers_webapp",
   "version": "1.0.0",
-  "description": "Greet exercise project is a web page that greets a user with the chosen language that a user preferes. The webpage has 3 languages.",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "mocha",

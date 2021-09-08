@@ -28,10 +28,10 @@ describe("Factory Function Tests", ()=>{
       var data = await useFactory.getErrors();
       assert.equal("please enter valid Reg Number e.g 'CA 123-897' OR 'CJ 7865466' OR 'CL 098 879'", data)
     })
-    it('Should be able to return error message for a wrong number plate format', async function(){
+    it('Should be able to return registration numbers from database', async function(){
       await useFactory.setDataToDb("CA 0987654");
       var data = await useFactory.getDataFromDb()
-      assert.equal("CA 0987654", data[0].regnumber)
+      assert.equal(1, await data.length)
     })
     after( async function(){
         await pool.end();
