@@ -31,9 +31,9 @@ describe("Factory Function Tests", ()=>{
     it('Should be able to return registration numbers from database', async function(){
       await useFactory.setDataToDb("CA 0987654");
       var data = await useFactory.getDataFromDb()
-      assert.equal(1, (await useFactory.getDataFromDb()).length)
+      assert.equal(data.length, (await useFactory.getDataFromDb()).length)
     })
     after( async function(){
         await pool.end();
     })
-})
+});
