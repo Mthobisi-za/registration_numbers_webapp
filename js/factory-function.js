@@ -50,6 +50,7 @@ module.exports = function factoryFunction(pool){
         return message;
     }
     async function reset(){
+        data = ""
         await useDbLogic.reset();
     }
     return{
