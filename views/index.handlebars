@@ -9,15 +9,15 @@
                     <form action="/update" method="POST">
                     <label for="regN">Registration Number</label> <br> <br>
                     <input type="text" placeholder="CA 123-897" name="regNum" maxlength="10" id="regN"> <br> <br> <span class="span" style="color: red;"></span> <br>
-                    <button id="btn" type="submit">Add</button> <button type="button" id="remove">Reset</button> <br> <br> <br><br>
+                    <button id="btn" type="submit">Add</button> <a href="/reset"><button type="button" id="remove">Reset</button></a> <br> <br> <br><br>
                     </form>
                     <!------radio buttons-->
                     <div class="div">
                         <form  method="post" action="/show">
-                        <label for="capetown">Cape Town</label> <input type="radio" name="group" value="CA" id="capetown">
-                        <label for="paarl">Paarl</label> <input type="radio" name="group" value="CJ" id="paarl">
-                        <label for="stelle">Stellenbosch</label> <input type="radio" name="group" value="CL" id="stelle">
-                        <label for="all">All</label> <input type="radio" name="group" value="All" id="all">
+                        <input type="radio" name="group" value="CA" id="capetown"><label for="capetown">Cape Town</label> 
+                        <input type="radio" name="group" value="CJ" id="paarl"><label for="paarl">Paarl</label>
+                        <input type="radio" name="group" value="CL" id="stelle"> <label for="stelle">Stellenbosch</label>
+                        <input type="radio" name="group" value="All" id="all"><label for="all">All</label> 
                     </div> <br>
                     <span class="sp" style="color: red;"> {{messages.info}}</span>
                     <br>

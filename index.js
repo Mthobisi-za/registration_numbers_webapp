@@ -28,6 +28,8 @@ app.post('/update' , useRoute.setData);
 //---displaying uniqueData
 app.post("/show", useRoute.showUnique)
 
+app.get('/reset' ,useRoute.reset)
+
 app.listen(PORT, ()=>{
     console.log("server started on "+ PORT)
 })

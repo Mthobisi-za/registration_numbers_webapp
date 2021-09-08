@@ -28,9 +28,14 @@ module.exports = function routesLogic(){
       await useFactory.uniqueReg(str)
       res.redirect("/");
     }
+    async function reset(req,res){
+      await useFactory.reset();
+      res.redirect("/")
+    }
     return{
         displayData,
         setData,
-        showUnique
+        showUnique,
+        reset
     }
 }

@@ -49,10 +49,14 @@ module.exports = function factoryFunction(pool){
     function getErrors(){
         return message;
     }
+    async function reset(){
+        await useDbLogic.reset();
+    }
     return{
         setDataToDb,
         getDataFromDb,
         uniqueReg,
-        getErrors
+        getErrors,
+        reset
     }
 }

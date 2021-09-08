@@ -15,10 +15,14 @@ module.exports = function database(pool){
         var data = await pool.query("select * from reg_numbers where refid= $1", [id]);
         return data
     }
+    async function reset(){
+        await pool.query("DELETE FROM reg_numbers");
+    }
     return{
         getData,
         setData,
         getStr,
-        getUniqueData
+        getUniqueData,
+        reset
     }
 }
