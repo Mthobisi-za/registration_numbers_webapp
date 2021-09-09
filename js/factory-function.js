@@ -25,23 +25,41 @@ module.exports = function factoryFunction(pool){
     async function uniqueReg(str){
         if(str === "All"){
             data = (await useDbLogic.getData()).rows;
+            if(data.length ==0){
+                message = "No data for all of the towns"; 
+                data = " "
+             } else{
+                 message = ""
+                 data = (await useDbLogic.getData()).rows;
+             }
         }else{
             
             try {
                 var id = (await useDbLogic.getStr(str)).rows[0].id;
+                var town = (await useDbLogic.getStr(str)).rows[0].towns;
                  data = (await useDbLogic.getUniqueData(id)).rows;
+                 if(data.length ==0){
+                    message = "No data for " + town; 
+                    data = " "
+                 } else{
+                     data = (await useDbLogic.getUniqueData(id)).rows;
+                     message = ""
+                 }
+                
             } catch (error) {
                 
             }  
         }
+        
         return await data
     }
 
     async function getDataFromDb(){
         var actulData;
-        if(data==undefined|| data.length==0){
+        if(data==undefined|| data.length==0 || data == " "){
             actulData = (await useDbLogic.getData()).rows;
         }else{
+            //actulData = (await useDbLogic.getData()).rows;
             actulData = data;
         }
         return await actulData

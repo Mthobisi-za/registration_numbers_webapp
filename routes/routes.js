@@ -25,7 +25,8 @@ module.exports = function routesLogic(){
     }
     async function showUnique(req,res){
       var str = req.body.group;
-      await useFactory.uniqueReg(str)
+      await useFactory.uniqueReg(str);
+      await useFactory.getDataFromDb();
       res.redirect("/");
     }
     async function reset(req,res){
