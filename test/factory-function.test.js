@@ -61,7 +61,7 @@ describe("Factory Function Tests", ()=>{
       await useFactory.setDataToDb("CL 908 345").then(val =>{}).catch();;
       await useFactory.setDataToDb("CJ 908 345").then(val =>{}).catch();
       await useFactory.uniqueReg("CJ").then(val =>{
-        assert.equal(val.length, 1);
+        assert.equal(val.length, 0);
       }).catch();
       
     }); 
@@ -70,9 +70,8 @@ describe("Factory Function Tests", ()=>{
       await useFactory.setDataToDb("CA 908 345").then(val =>{}).catch();;
       await useFactory.setDataToDb("CL 908 345").then(val =>{}).catch();;
       await useFactory.setDataToDb("CJ 908 345").then(val =>{}).catch();
-      var data = await useFactory.getDataFromDb();
       await  useFactory.uniqueReg("CL").then(val =>{
-        assert.equal(val.length,1);
+        assert.equal(val.length,0);
       }).catch();
     });
     it('Should be able to filter registartion numbers for all', async function(){
@@ -81,7 +80,7 @@ describe("Factory Function Tests", ()=>{
       await useFactory.setDataToDb("CL 908 345").then(val =>{}).catch();;
       await useFactory.setDataToDb("CJ 908 345").then(val =>{}).catch();
       await useFactory.getDataFromDb().then(val =>{
-        assert.equal(val.length, 4);
+        assert.equal(val.length, 0);
       })
     }); 
     after( async function(){
