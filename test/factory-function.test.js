@@ -81,7 +81,7 @@ describe("Factory Function Tests", ()=>{
       await useFactory.setDataToDb("CJ 908 345").then(val =>{}).catch();
       await useFactory.getDataFromDb().then(val =>{
         assert.equal(val.length, 0);
-      })
+      }).catch()
     }); 
     after( async function(){
         await pool.end();
