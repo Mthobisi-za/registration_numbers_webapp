@@ -14,7 +14,6 @@ app.use(
   })
 );
 app.use(flash());
-
 const routes = require("./routes/routes");
 const useRoute = routes();
 const {Pool} = require("pg");
@@ -28,21 +27,17 @@ if(connectionString){
 } else{
   pool = new Pool(obj)
 }
-
 //---require the database
 app.use(express.static('public'));
 app.engine('handlebars',exhbs({defaultLayout: "main", layoutsDir: "views/layouts"}));
 app.set("view engine", "handlebars");
-
 app.use(body.urlencoded({extended: false}));
 app.use(body.json());
 app.get("/", useRoute.displayData);
 app.post('/update' , useRoute.setData);
 //---displaying uniqueData
 app.post("/show", useRoute.showUnique)
-
 app.get('/reset' ,useRoute.reset)
-
 app.listen(PORT, ()=>{
     console.log("server started on "+ PORT)
 })
