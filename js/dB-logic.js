@@ -4,20 +4,18 @@ module.exports = function database(pool){
         return str
     };
     async function setData(regNum, id){
-        //check if the name exist...
+       
          var checkname = await pool.query(`SELECT regnumber from reg_numbers WHERE regnumber = $1`, [regNum]);
-                //if not insert the name...
+                
               if (checkname.rowCount < 1) {
   
                 await pool.query("insert into reg_numbers (regnumber, refid) values($1,$2)", [regNum, id])
               }
-                //if name exist update the counter for that name...
+               
               else {
-                  //await pool.query(`UPDATE users SET  counter= counter + 1 WHERE name = $1`, [name])
+                  
               }
-
-        //await pool.query("insert into reg_numbers (regnumber, refid) values($1,$2)", [regNum, id])
-    }
+}
     async function getData(){
        var data = await pool.query("select regnumber from reg_numbers");
        return await data
@@ -30,11 +28,21 @@ module.exports = function database(pool){
     async function reset(){
         await pool.query("DELETE FROM reg_numbers");
     }
+    async function checkIfItExists(regNum){
+        var checkname = await pool.query(`SELECT regnumber from reg_numbers WHERE regnumber = $1`, [regNum]);
+              if (checkname.rowCount < 1) {
+    
+              }
+              else {
+                  return "Registration Number already exists"
+              }
+    }
     return{
         getData,
         setData,
         getStr,
         getUniqueData,
-        reset
+        reset,
+        checkIfItExists
     }
 }

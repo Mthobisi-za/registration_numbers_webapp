@@ -1,8 +1,8 @@
 const dbLogic = require("./dB-logic");
 const {Pool} = require("pg");
-// we are using a special test database for the tests
+
 const connectionString = process.env.DATABASE_URL;
-//{connectionString, ssl: {rejectUnauthorized: false}}
+
 var obj = {user: "postgres",host: "localhost",database: "users",password: "mthobisi",port: 5432}
 var pool;
 if(connectionString){
@@ -24,8 +24,19 @@ module.exports = function factoryFunction(){
            var format = /CL \d+.\d+|CA \d+.\d+|CJ \d+.\d+/g;
            if(checkIfDataIsnNotEmpty && format.test(regNum)){
                //You may set The data to Db;
-              await useDbLogic.setData(regNum, await data.rows[0].id);
-              message = ""
+               //check if regNum already exists
+               var checking = await useDbLogic.checkIfItExists(regNum)
+               if(checking !== "Registration Number already exists"){
+                await useDbLogic.setData(regNum, await data.rows[0].id);
+                message = ""
+               } else{
+                   message = checking
+                   setTimeout(()=>{
+                       message = ""
+                   }, 1000)
+               }
+               //----
+              
            } else{
                message = "please enter valid Reg Number e.g 'CA 123-897' OR 'CJ 7865466' OR 'CL 098 879'"
             }
